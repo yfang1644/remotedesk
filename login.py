@@ -28,8 +28,9 @@ def fetch(event):
         print remote
         os.system(remote)
 def resetpassword():
-    head.config(text = '口令重置\n ')
+    head.config(text = '口令重置')
     win = Toplevel()
+    win.title("Reset Password")
     win.protocol('WM_DELETE_WINDOW', win.quit) 
     r = ResetPassword(win)
     r.pack()
@@ -45,11 +46,13 @@ def resetpassword():
 if __name__ == '__main__':
     root = Tk()
     root.title('Login Windows')
-    head = Label(root, text='请输入用户名和口令', font=('courier', 20, 'normal'))
+    head= Label(root, text='电子实验中心', font=('AR PL UMing CN', 20, 'normal'))
     head.pack(side=TOP,padx=10, pady=10)
+    Label(root, text='Blue Genie 云桌面', font=('AR PL UKai CN', 20, 'normal')).pack(
+        side=TOP)
     ents = MakeForm(root)
     root.bind('<Return>', fetch)   
-    Button(root, text='重置口令', command=resetpassword).pack(side=TOP)
+    Button(root, text='重置口令', command=resetpassword).pack(side=TOP, pady=10)
 
     if len(sys.argv) == 2:
         userhost = sys.argv[1]
