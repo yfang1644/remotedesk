@@ -7,26 +7,29 @@
 
 from Tkinter import *
 
+
 class MakeForm(Frame):
-    vars = []
     def __init__(self, parent=None):
+        self.vars = []
         list = ('用户名', '口令')
         Frame.__init__(self, parent)
         self.pack()
         fontsel = ('Courier', 20, 'bold')
         for e in list:
-            row=Frame(self)
-            lab=Label(row, font=fontsel, width=10, text=e)
+            row = Frame(self)
+            lab = Label(row, font=fontsel, width=10, text=e)
             if e == '口令':
-                en = Entry(row, width=16,font=fontsel, show='*')
+                en = Entry(row, width=16, font=fontsel, show='*')
             else:
-                en = Entry(row, width=16,font=fontsel)
-            row.pack(side=TOP,fill=X)
+                en = Entry(row, width=16, font=fontsel)
+            row.pack(side=TOP, fill=X)
             lab.pack(side=LEFT)
-            en.pack(side=RIGHT,expand=YES,fill=X,padx=5, pady=5)
+            en.pack(side=RIGHT, expand=YES, fill=X, padx=5, pady=5)
             self.vars.append(en)
+
     def getlabels(self):
         return self.vars
+
 
 if __name__ == '__main__':
     MakeForm().mainloop()
